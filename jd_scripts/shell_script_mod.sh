@@ -16,7 +16,7 @@ cat /dust/i-chenzhe/remote_crontab_list.sh >> /scripts/docker/merged_list_file.s
 echo "# 店铺大转盘" >> /scripts/docker/merged_list_file.sh
 echo "20 0,10,23 * * * node /scripts/monk_shop_lottery.js >> /scripts/logs/monk_shop_lottery.log 2>&1" >> /scripts/docker/merged_list_file.sh
 
-if [ ! -d "/scripts/jd_live_lottery_social.js" ]; then
+if [ ! -f "/scripts/jd_live_lottery_social.js" ]; then
     echo "未检查到live_lottery脚本..."
 else
     echo "检查到live_lottery脚本..."
