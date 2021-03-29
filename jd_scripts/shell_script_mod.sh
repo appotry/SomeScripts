@@ -6,8 +6,8 @@ if [ ! -d "/dust/" ]; then
     git clone https://github.com/monk-coder/dust.git /dust
 else
     echo "更新dust脚本相关文件..."
-    git -C /i-chenzhe reset --hard
-    git -C /i-chenzhe pull origin dust --rebase
+    git -C /dust reset --hard
+    git -C /dust pull origin dust --rebase
 fi
 cp -f /dust/i-chenzhe/*.js /scripts
 cp -f /dust/normal/*.js /scripts
