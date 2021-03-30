@@ -1,9 +1,9 @@
 FROM node:lts-alpine
-RUN git clone https://github.com/troyeguo/koodo-reader.git /koodo \
-        && cd /koodo \
-        && yarn \
-        && yarn build
+WORKDIR /app
+RUN git clone https://github.com/troyeguo/koodo-reader.git /koodo
+ADD /koodo .
+RUN yarn ; yarn build
 
 FROM nginx:alpine
-WORKDIR /koodo
-COPY --from=0 /koodo/build /usr/share/nginx/html
+WORKDIR /app
+COPY --from=0 /app/build /usr/share/nginx/html
