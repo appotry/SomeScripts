@@ -11,12 +11,7 @@ else
 fi
 cp -f /dust/i-chenzhe/*_*.js /scripts
 cp -f /dust/normal/*_*.js /scripts
-cat /dust/i-chenzhe/remote_crontab_list.sh >> /scripts/docker/merged_list_file.sh
-
-echo "# 店铺大转盘" >> /scripts/docker/merged_list_file.sh
-echo "5 10,22 * * * node /scripts/monk_shop_lottery.js >> /scripts/logs/monk_shop_lottery.log 2>&1" >> /scripts/docker/merged_list_file.sh
-echo "# 母婴-跳一跳" >> /scripts/docker/merged_list_file.sh
-echo "10 8,14,20 25-31 3 * node /scripts/z_mother_jump.js >> /scripts/logs/z_mother_jump.log 2>&1" >> /scripts/docker/merged_list_file.sh
+cat /jds/jd_scripts/remote_crontab_list.sh >> /scripts/docker/merged_list_file.sh
 
 if [ ! -f "/scripts/jd_live_lottery_social.js" ]; then
     echo "未检查到live_lottery脚本..."
