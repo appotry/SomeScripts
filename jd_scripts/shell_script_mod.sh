@@ -9,8 +9,8 @@ else
     git -C /dust reset --hard
     git -C /dust pull origin dust --rebase
 fi
-cp -f /dust/i-chenzhe/*.js /scripts
-cp -f /dust/normal/*.js /scripts
+cp -f /dust/i-chenzhe/*_*.js /scripts
+cp -f /dust/normal/*_*.js /scripts
 cat /dust/i-chenzhe/remote_crontab_list.sh >> /scripts/docker/merged_list_file.sh
 
 echo "# 店铺大转盘" >> /scripts/docker/merged_list_file.sh
