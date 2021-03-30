@@ -23,5 +23,5 @@ if [ ! -f "/scripts/jd_live_lottery_social.js" ]; then
 else
     echo "检查到live_lottery脚本..."
     echo "# 直播间抽奖" >> /scripts/docker/merged_list_file.sh
-    echo "20 11,23 * * * node /scripts/jd_live_lottery_social.js >> /scripts/logs/jd_live_lottery_social.log 2>&1" >> /scripts/docker/merged_list_file.sh
+    echo "20 23 * * * node /scripts/jd_live_lottery_social.js >> /scripts/logs/jd_live_lottery_social.log 2>&1" >> /scripts/docker/merged_list_file.sh
 fi
