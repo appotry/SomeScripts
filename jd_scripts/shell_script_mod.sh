@@ -12,6 +12,7 @@ fi
 
 cp -f /dust/car/*_*.js /scripts
 cp -f /dust/i-chenzhe/*_*.js /scripts
+cp -f /dust/member/*_*.js /scripts
 cp -f /dust/normal/*_*.js /scripts
 cat /jds/jd_scripts/remote_crontab_list.sh >> /scripts/docker/merged_list_file.sh
 
