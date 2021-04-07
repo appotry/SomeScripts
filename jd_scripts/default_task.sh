@@ -92,7 +92,8 @@ long-@LvanLamCommitCodeBot-/jdzz-jd_jdzz.log-@N-京东赚赚好友互助码】
 #临时活动
 temp-@TuringLabbot-/submit_activity_codes-jd_sgmh.log-sgmh-闪购盲盒好友互助码】
 temp-@TuringLabbot-/submit_activity_codes-jd_cfd.log-jxcfd-京喜财富岛好友互助码】
-temp-@TuringLabbot-/submit_activity_codes-jd_carnivalcity.log-carnivalcity-京东手机狂欢城好友互助码】
+#每天变化活动
+daily-@TuringLabbot-/submit_activity_codes-jd_carnivalcity.log-carnivalcity-京东手机狂欢城好友互助码】
 EOF
         ) >$CODE_GEN_CONF
     else
