@@ -14,7 +14,7 @@ RUN set -ex \
         && chmod 600 /root/.ssh/id_rsa \
         && ssh-keyscan github.com > /root/.ssh/known_hosts
 
-RUN git clone https://github.com/gitupdate/updateTeam.gitt /scripts \
+RUN git clone https://github.com/gitupdate/updateTeam.git /scripts \
         && mkdir /runscripts \
         && cp -f /scripts/*.js /runscripts \
         && cp -f /scripts/*.json /runscripts \
