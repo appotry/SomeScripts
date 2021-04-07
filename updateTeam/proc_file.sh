@@ -30,15 +30,16 @@ else
     fi
 fi
 
-##京东京喜工厂自动开团
-echo "执行京东京喜工厂自动开团..."
+echo "京东京喜工厂自动开团..."
 node /runscripts/jd_jxFactoryCreateTuan.js >> /logs/jd_jxFactoryCreateTuan.log 2>&1
-##赚京豆小程序
-echo "执行赚京豆小程序..."
-node /runscripts/jd_zzUpdate.js >> /logs/jd_zzUpdate.log 2>&1
-##更新领现金
-echo "执行更新领现金..."
+echo "更新抢京豆邀请码..."
+node /scripts/jd_updateBeanHome.js >> /scripts/logs/jd_updateBeanHome.log 2>&1
+echo "更新领现金..."
 node /runscripts/jd_updateCash.js >> /logs/jd_updateCash.log 2>&1
+echo "更新东东小窝邀请码..."
+node /scripts/jd_update_home.js >> /scripts/logs/jd_update_home.log 2>&1
+echo "赚京豆小程序..."
+node /runscripts/jd_zzUpdate.js >> /logs/jd_zzUpdate.log 2>&1
 
 echo "更新updateTeam仓库文件..."
 cp -rf /runscripts/shareCodes /updateTeam/

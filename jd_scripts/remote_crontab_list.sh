@@ -15,7 +15,7 @@
 # 5G超级盲盒
 0 1,6,11,16,21 * 3-4 * node /scripts/z_super5g.js >> /scripts/logs/z_super5g.log 2>&1
 # 京东小魔方
-15 10 4-6 4 * node /scripts/z_xmf.js >> /scripts/logs/z_xmf.log 2>&1
+10 10 7-9 4 * node /scripts/z_xmf.js >> /scripts/logs/z_xmf.log 2>&1
 # 有机牧场
 0 0,1-22/2 1-31 4-7 * node /scripts/monk_pasture.js >> /scripts/logs/monk_pasture.log 2>&1
 # interCenter渠道店铺签到
