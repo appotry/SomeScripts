@@ -6,12 +6,12 @@ if [ $1 ]; then
     run_cmd=$1
 fi
 
-# echo "更新updateTeam仓库文件..."
-# cd /scripts
-# git reset --hard
-# git pull origin master --rebase
-# cp -f /scripts/*.js /runscripts
-# cp -f /scripts/*.json /runscripts
+echo "更新updateTeam仓库文件..."
+cd /scripts
+git reset --hard
+git pull origin master --rebase
+cp -f /scripts/*.js /runscripts
+cp -f /scripts/*.json /runscripts
 
 echo "更新jds仓库文件..."
 cd /jds
