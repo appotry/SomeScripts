@@ -82,18 +82,17 @@ long-@TuringLabbot-/submit_activity_codes-jd_pet.log-pet-东东萌宠好友互�
 long-@TuringLabbot-/submit_activity_codes-jd_jdfactory.log-ddfactory-东东工厂好友互助码】
 #京喜工厂
 long-@TuringLabbot-/submit_activity_codes-jd_dreamFactory.log-jxfactory-京喜工厂好友互助码】
-#临时活动
-temp-@TuringLabbot-/submit_activity_codes-jd_sgmh.log-sgmh-您的好友助力码为:
-#临时活动
-temp-@TuringLabbot-/submit_activity_codes-jd_cfd.log-jxcfd-主】你的互助码:
-temp-@TuringLabbot-/submit_activity_codes-jd_global.log-jdglobal-好友助力码为
-
-#分红狗活动
+#疯狂的JOY
 long-@LvanLamCommitCodeBot-/jdcrazyjoy-jd_crazy_joy.log-@N-crazyJoy任务好友互助码】
 #签到领现金
-long-@LvanLamCommitCodeBot-/jdcash-jd_cash.log-@N-您的助力码为
+long-@LvanLamCommitCodeBot-/jdcash-jd_cash.log-@N-签到领现金好友互助码】
 #京东赚赚
 long-@LvanLamCommitCodeBot-/jdzz-jd_jdzz.log-@N-京东赚赚好友互助码】
+
+#临时活动
+temp-@TuringLabbot-/submit_activity_codes-jd_sgmh.log-sgmh-闪购盲盒好友互助码】
+temp-@TuringLabbot-/submit_activity_codes-jd_cfd.log-jxcfd-京喜财富岛好友互助码】
+temp-@TuringLabbot-/submit_activity_codes-jd_carnivalcity.log-carnivalcity-京东手机狂欢城好友互助码】
 EOF
         ) >$CODE_GEN_CONF
     else
