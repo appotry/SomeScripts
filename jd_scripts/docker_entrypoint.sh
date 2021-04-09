@@ -39,13 +39,19 @@ fi
 cd /jds
 git pull origin master --rebase
 
+if [[ -n "$run_cmd" && -n "$TG_BOT_TOKEN" && -n "$TG_USER_ID" ]]; then
+    ENABLE_BOT_COMMAND=True
+else
+    ENABLE_BOT_COMMAND=False
+fi
+
 echo "------------------------------------------------执行定时任务任务shell脚本------------------------------------------------"
-sh /jds/jd_scripts/shell_default_script.sh "$run_cmd"
+sh /jds/jd_scripts/shell_default_script.sh "$ENABLE_BOT_COMMAND" "$run_cmd"
 echo "--------------------------------------------------默认定时任务执行完成---------------------------------------------------"
 
 if [ "$run_cmd" ]; then
 
-  if [ "$run_cmd" == 'jdbot' ]; then
+  if [ "$ENABLE_BOT_COMMAND" == "True" ]; then
     # 启动jdbot安装依赖等操作操作放到后台，不耽阻塞定crontab启动工作
     echo "后台启动jdbot程序..."
     sh "$BOT_DIR/jdbot.sh" >>"$LOGS_DIR/jdbot_start.log" 2>&1 &
