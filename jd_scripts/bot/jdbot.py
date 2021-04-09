@@ -49,7 +49,7 @@ if "BOT_DIR" in os.environ:
 if "GEN_CODE_LIST" in os.environ:
     _gen_code_conf = os.getenv("GEN_CODE_LIST")
 
-_interactive_cmd_list = ['node', 'spnode', 'crontab']
+_interactive_cmd_list = ['node', 'spnode', 'crontab -l']
 _gen_code_cmd_list = ['gen_long_code', 'gen_temp_code', 'gen_daily_code', _EXT]
 _sys_cmd_list = ['ls', 'cp', 'cat', 'echo', 'ps', 'sed', 'wget', 'update', 'restart', ]
 if len(_EXT_SYS_CMD.split("&")) > 0 and _EXT_SYS_CMD != "":
