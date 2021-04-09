@@ -1,6 +1,6 @@
 # 加购有礼
 15 12 * * *  node /scripts/monk_shop_add_to_car.js >> /scripts/logs/monk_shop_add_to_car.log 2>&1
-# 创维408下班全勤奖
+# 下班全勤奖
 15 8 2-18 4 * node /scripts/monk_skyworth_car.js >> /scripts/logs/monk_skyworth_car.log 2>&1
 # 百变大咖秀
 0 10,11 * * 2-5 node /scripts/z_entertainment.js >> /scripts/logs/z_entertainment.log 2>&1
@@ -12,8 +12,6 @@
 5 8,14,20 6-13 4 * node /scripts/z_mother_jump.js >> /scripts/logs/z_mother_jump.log 2>&1
 # 超级摇一摇
 3 0,20 * * * node /scripts/z_shake.js >> /scripts/logs/z_shake.log 2>&1
-# 5G超级盲盒
-0 1,6,11,16,21 * 3-4 * node /scripts/z_super5g.js >> /scripts/logs/z_super5g.log 2>&1
 # 京东小魔方
 10 10 7-9 4 * node /scripts/z_xmf.js >> /scripts/logs/z_xmf.log 2>&1
 # 有机牧场
