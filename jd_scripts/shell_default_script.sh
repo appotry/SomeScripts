@@ -105,7 +105,7 @@ sed -i "/\( ts\| |ts\|| ts\)/!s/>>/\|ts >>/g" $mergedListFile
 sed -i "/\(>&1 &\|> &1 &\)/!s/>&1/>\&1 \&/g" $mergedListFile
 
 echo "第9步判断是否需要生成${COOKIE_LIST}文件"
-if [ -z "$JD_COOKIE" ]; then
+if [ 0"$JD_COOKIE" = "0" ]; then
   if [ -f "$COOKIE_LIST" ]; then
     echo "└──未配置JD_COOKIE环境变量，${COOKIE_LIST}文件已存在,请将cookies写入${COOKIE_LIST}文件，格式每个Cookie一行"
   else
@@ -117,7 +117,7 @@ else
     echo "└──cookies.conf文件已经存在跳过,如果需要更新cookie请修改${COOKIE_LIST}文件内容"
   else
     echo "└──环境变量 cookies写入${COOKIE_LIST}文件,如果需要更新cookie请修改cookies.list文件内容"
-    echo "$COOKIE_LIST" | sed "s/\( &\|&\)/\\n/g" >"$COOKIE_LIST"
+    echo "$JD_COOKIE" | sed "s/\( &\|&\)/\\n/g" >"$COOKIE_LIST"
   fi
 fi
 
