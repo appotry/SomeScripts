@@ -1,4 +1,4 @@
 aiogram==2.12.1
-setuptools~=49.6.0
+setuptools~=56.0.0
 requests~=2.25.1
 myqr~=2.3.1
