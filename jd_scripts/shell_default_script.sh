@@ -139,6 +139,12 @@ crontab $mergedListFile
 # tar -zcvf /scripts/logs/scripts.tar.gz --exclude=scripts/node_modules --exclude=scripts/logs/*.log  --exclude=scripts/logs/*.gz /scripts
 #!/bin/sh
 
+if [[ -n "$TG_BOT_TOKEN" && -n "$TG_USER_ID" ]]; then
+  CMD="spnode"
+else
+  CMD="node"
+fi
+
 echo "处理jd_crazy_joy_coin任务。。。"
 if [ ! $CRZAY_JOY_COIN_ENABLE ]; then
   echo "默认启用jd_crazy_joy_coin杀掉jd_crazy_joy_coin任务，并重启"
