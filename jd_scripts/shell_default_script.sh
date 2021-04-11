@@ -77,7 +77,13 @@ else
   echo "55 */1 * * * docker_entrypoint.sh >> /scripts/logs/default_task.log 2>&1" >>$mergedListFile
 fi
 
-echo "第5步判断是否配置了随即延迟参数..."
+echo "第5步判断是否配置自定义shell执行脚本..."
+sh -x /jds/jd_scripts/shell_mod_script.sh
+
+echo "第6步执行proc_file.sh脚本任务..."
+sh -x /jds/jd_scripts/proc_file.sh
+
+echo "第7步判断是否配置了随即延迟参数..."
 if [ "$RANDOM_DELAY_MAX" ]; then
   if [ "$RANDOM_DELAY_MAX" -ge 1 ]; then
     echo "└──已设置随机延迟为 $RANDOM_DELAY_MAX , 设置延迟任务中..."
@@ -87,11 +93,7 @@ else
   echo "└──未配置随即延迟对应的环境变量，故不设置延迟任务..."
 fi
 
-echo "第6步判断是否配置自定义shell执行脚本..."
-sh -x /jds/jd_scripts/shell_mod_script.sh
 
-echo "第7步执行proc_file.sh脚本任务..."
-sh -x /jds/jd_scripts/proc_file.sh
 
 echo "第8步判断是否配置了不运行的脚本..."
 if [ $DO_NOT_RUN_SCRIPTS ]; then
