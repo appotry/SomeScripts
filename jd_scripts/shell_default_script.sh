@@ -131,7 +131,7 @@ cat /jds/jd_scripts/docker_entrypoint.sh >/usr/local/bin/docker_entrypoint.sh
 echo "最后加载最新的附加功能定时任务文件..."
 echo "└──替换任务列表的node指令为spnode"
 sed -i "s/ node / spnode /g" $mergedListFile
-sed -i "/jd_carnivalcity/s/>>/>/g" $mergedListFile
+sed -i "//jd_blueCoin\|jd_joy_reward\|jd_car_exchange\|jd_carnivalcity/s/>>/>/g" $mergedListFile
 crontab $mergedListFile
 
 # echo "第11步打包脚本文件到/scripts/logs/scripts.tar.gz"
