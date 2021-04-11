@@ -91,7 +91,7 @@ echo "第6步判断是否配置自定义shell执行脚本..."
 sh -x /jds/jd_scripts/shell_mod_script.sh
 
 echo "第7步执行proc_file.sh脚本任务..."
-sh -x /scripts/docker/proc_file.sh
+sh -x /jds/jd_scripts/proc_file.sh
 
 echo "第8步判断是否配置了不运行的脚本..."
 if [ $DO_NOT_RUN_SCRIPTS ]; then
