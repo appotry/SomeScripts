@@ -90,7 +90,10 @@ fi
 echo "第6步判断是否配置自定义shell执行脚本..."
 sh -x /jds/jd_scripts/shell_mod_script.sh
 
-echo "第7步判断是否配置了不运行的脚本..."
+echo "第7步执行proc_file.sh脚本任务..."
+sh -x /scripts/docker/proc_file.sh
+
+echo "第8步判断是否配置了不运行的脚本..."
 if [ $DO_NOT_RUN_SCRIPTS ]; then
     echo "您配置了不运行的脚本：$DO_NOT_RUN_SCRIPTS"
     arr=${DO_NOT_RUN_SCRIPTS//&/ }
@@ -99,12 +102,12 @@ if [ $DO_NOT_RUN_SCRIPTS ]; then
     done
 fi
 
-echo "第8步增加 |ts 任务日志输出时间戳..."
+echo "第9步增加 |ts 任务日志输出时间戳..."
 sed -i "/\( ts\| |ts\|| ts\)/!s/>>/\|ts >>/g" $mergedListFile
 
 sed -i "/\(>&1 &\|> &1 &\)/!s/>&1/>\&1 \&/g" $mergedListFile
 
-echo "第9步判断是否需要生成${COOKIE_LIST}文件"
+echo "第10步判断是否需要生成${COOKIE_LIST}文件"
 if [ 0"$JD_COOKIE" = "0" ]; then
   if [ -f "$COOKIE_LIST" ]; then
     echo "└──未配置JD_COOKIE环境变量，${COOKIE_LIST}文件已存在,请将cookies写入${COOKIE_LIST}文件，格式每个Cookie一行"
@@ -121,11 +124,11 @@ else
   fi
 fi
 
-echo "第10步加载最新的定时任务文件..."
+echo "第11步加载最新的定时任务文件..."
 crontab -l >/scripts/befor_cronlist.sh
 crontab $mergedListFile
 
-echo "第11步将仓库的docker_entrypoint.sh脚本更新至系统/usr/local/bin/docker_entrypoint.sh内..."
+echo "第12步将仓库的docker_entrypoint.sh脚本更新至系统/usr/local/bin/docker_entrypoint.sh内..."
 cat /jds/jd_scripts/docker_entrypoint.sh >/usr/local/bin/docker_entrypoint.sh
 
 echo "最后加载最新的附加功能定时任务文件..."
@@ -138,29 +141,3 @@ crontab $mergedListFile
 # apk add tar
 # tar -zcvf /scripts/logs/scripts.tar.gz --exclude=scripts/node_modules --exclude=scripts/logs/*.log  --exclude=scripts/logs/*.gz /scripts
 #!/bin/sh
-
-if [[ -n "$TG_BOT_TOKEN" && -n "$TG_USER_ID" ]]; then
-  CMD="spnode"
-else
-  CMD="node"
-fi
-
-echo "处理jd_crazy_joy_coin任务。。。"
-if [ ! $CRZAY_JOY_COIN_ENABLE ]; then
-  echo "默认启用jd_crazy_joy_coin杀掉jd_crazy_joy_coin任务，并重启"
-  eval $(ps -ef | grep "jd_crazy_joy_coin" | grep -v "grep" | awk '{print "kill "$1}')
-  echo '' >/scripts/logs/jd_crazy_joy_coin.log
-  $CMD /scripts/jd_crazy_joy_coin.js | ts >>/scripts/logs/jd_crazy_joy_coin.log 2>&1 &
-  echo "默认jd_crazy_joy_coin重启完成"
-else
-  if [ $CRZAY_JOY_COIN_ENABLE = "Y" ]; then
-    echo "配置启用jd_crazy_joy_coin，杀掉jd_crazy_joy_coin任务，并重启"
-    eval $(ps -ef | grep "jd_crazy_joy_coin" | grep -v "grep" | awk '{print "kill "$1}')
-    echo '' >/scripts/logs/jd_crazy_joy_coin.log
-    $CMD /scripts/jd_crazy_joy_coin.js | ts >>/scripts/logs/jd_crazy_joy_coin.log 2>&1 &
-    echo "配置jd_crazy_joy_coin重启完成"
-  else
-    eval $(ps -ef | grep "jd_crazy_joy_coin" | grep -v "grep" | awk '{print "kill "$1}')
-    echo "已配置不启用jd_crazy_joy_coin任务，仅杀掉"
-  fi
-fi
