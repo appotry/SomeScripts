@@ -7,14 +7,18 @@ remoteListFile="/jds/jd_scripts/remote_crontab_list.sh"
 echo "附加功能1，使用jds仓库的gen_code_conf.list文件"
 cp /jds/jd_scripts/gen_code_conf.list "$GEN_CODE_LIST"
 
-echo "附加功能2，拉取monk-coder仓库的代码，并增加相关任务"
-if [ ! -d "/monk/" ]; then
-    echo "未检查到monk-coder仓库脚本，初始化下载相关脚本..."
-    git clone https://github.com/Aaron-lv/monk-coder_backup /monk
+if [ 0"$MONK" != "0" ]; then
+  echo "附加功能2，拉取monk-coder仓库的代码，并增加相关任务"
+  if [ ! -d "/monk/" ]; then
+      echo "未检查到monk-coder仓库脚本，初始化下载相关脚本..."
+      git clone git@github.com:monk-coder/dust /monk
+  else
+      echo "更新monk-coder脚本相关文件..."
+      git -C /monk reset --hard
+      git -C /monk pull origin dust --rebase
+  fi
 else
-    echo "更新monk-coder脚本相关文件..."
-    git -C /monk reset --hard
-    git -C /monk pull origin dust --rebase
+  echo "没有配置monk..."
 fi
 
 if [ -n "$(ls /monk/car/*_*.js)" ]; then
