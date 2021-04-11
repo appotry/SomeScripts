@@ -22,3 +22,5 @@
 15 15 * * * node /scripts/monk_shop_follow_sku.js >> /scripts/logs/monk_shop_follow_sku.log 2>&1
 # 店铺大转盘
 3 0,10,23 * * * node /scripts/monk_shop_lottery.js >> /scripts/logs/monk_shop_lottery.log 2>&1
+# jd_carnivalcity
+59 23 * * * rm /scripts/logs/jd_carnivalcity.log
