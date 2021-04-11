@@ -32,10 +32,6 @@ fi
 sed -i "/^$/d" $remoteListFile
 cat $remoteListFile >> $mergedListFile
 
-echo "替换node使用spnode执行任务"
-sed -i "s/node/spnode/g" "$mergedListFile"
-sed -i "/\(jd_carnivalcity.js\|jd_car_exchange.js\)/s/spnode/spnode conc/g" "$mergedListFile"
-
 # 修改赚金豆定时
 sed -i "s/12 8,18 \* \* \* spnode \/scripts\/jd_syj.js/2 8,18 \* \* \* spnode \/scripts\/jd_syj.js/g" /scripts/docker/merged_list_file.sh
 sed -i "s/12 8,18 \* \* \* sleep \$((RANDOM % \$RANDOM_DELAY_MAX)); spnode \/scripts\/jd_syj.js/2 8,18 \* \* \* sleep \$((RANDOM % \$RANDOM_DELAY_MAX)); spnode \/scripts\/jd_syj.js/g" /scripts/docker/merged_list_file.sh
