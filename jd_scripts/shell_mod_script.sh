@@ -7,36 +7,37 @@ remoteListFile="/jds/jd_scripts/remote_crontab_list.sh"
 echo "附加功能1，使用jds仓库的gen_code_conf.list文件"
 cp /jds/jd_scripts/gen_code_conf.list "$GEN_CODE_LIST"
 
-if [ "$MONK" = "Y" ]; then
-  echo "附加功能2，拉取monk-coder仓库的代码，并增加相关任务..."
-  echo "SSH KEY 配置开始..."
-  mkdir -p /root/.ssh
-  echo -e "$MONK_SSH_KEY" > /root/.ssh/id_rsa
-  chmod 600 /root/.ssh/id_rsa
-  ssh-keyscan github.com > /root/.ssh/known_hosts
-  echo "SSH KEY 配置完成..."
-  if [ ! -d "/monk/" ]; then
-      echo "未检查到monk-coder仓库脚本，初始化下载相关脚本..."
-      git clone git@github.com:monk-coder/dust /monk
+echo "附加功能2，拉取monk-coder仓库的代码，并增加相关任务..."
+if [ ! -d "/monk/" ]; then
+  echo "未检查到monk-coder仓库脚本，初始化下载相关脚本..."
+  if [ "$MONK" = "Y" ]; then
+    echo "SSH KEY 配置开始..."
+    mkdir -p /root/.ssh
+    echo -e "$MONK_SSH_KEY" > /root/.ssh/id_rsa
+    chmod 600 /root/.ssh/id_rsa
+    ssh-keyscan github.com > /root/.ssh/known_hosts
+    echo "SSH KEY 配置完成，初始化下载相关脚本..."
+    git clone git@github.com:monk-coder/dust /monk
   else
-      echo "更新monk-coder脚本相关文件..."
-      git -C /monk reset --hard
-      git -C /monk pull origin dust --rebase
-  fi
-  if [ -n "$(ls /monk/car/*_*.js)" ]; then
-  cp -f /monk/car/*_*.js /scripts
-  fi
-  if [ -n "$(ls /monk/i-chenzhe/*_*.js)" ]; then
-    cp -f /monk/i-chenzhe/*_*.js /scripts
-  fi
-  if [ -n "$(ls /monk/member/*_*.js)" ]; then
-    cp -f /monk/member/*_*.js /scripts
-  fi
-  if [ -n "$(ls /monk/normal/*_*.js)" ]; then
-    cp -f /monk/normal/*_*.js /scripts
+    echo "未检查到 MONK_SSH_KEY..."
   fi
 else
-  echo "没有配置monk..."
+  echo "更新monk-coder脚本相关文件..."
+  git -C /monk reset --hard
+  git -C /monk pull origin dust --rebase
+fi
+
+if [ -n "$(ls /monk/car/*_*.js)" ]; then
+  cp -f /monk/car/*_*.js /scripts
+fi
+if [ -n "$(ls /monk/i-chenzhe/*_*.js)" ]; then
+  cp -f /monk/i-chenzhe/*_*.js /scripts
+fi
+if [ -n "$(ls /monk/member/*_*.js)" ]; then
+  cp -f /monk/member/*_*.js /scripts
+fi
+if [ -n "$(ls /monk/normal/*_*.js)" ]; then
+  cp -f /monk/normal/*_*.js /scripts
 fi
 
 sed -i "/^$/d" $remoteListFile

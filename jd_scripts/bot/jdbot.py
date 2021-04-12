@@ -63,7 +63,10 @@ async def help_handler(message: types.Message):
     gen_cmd_list = _gen_code_cmd_list
     if _EXT in _gen_code_cmd_list:
         gen_cmd_list.remove(_EXT)
+    reply_keyboard = await jdutils.gen_reply_markup_btn(row_btn_cnt=4, keyboard_type="reply")
+
     await bot.send_message(chat_id=message.from_user.id,
+                           reply_markup=reply_keyboard,
                            text="`限制自己使用的交互拓展机器人`\n" +
                                 "\n" +
                                 f"`支持的的指令列表为：`\n" +
@@ -194,6 +197,7 @@ async def query_callback_filter(query: types.CallbackQuery):
 
 @dp.callback_query_handler(query_callback_filter)
 async def inline_kb_answer_callback_handler(query: types.CallbackQuery, callback_type: str, data: str):
+    logger.info(query)
     await query.answer(query.data)
     if callback_type == "cancel":
         await query.message.edit_text(
