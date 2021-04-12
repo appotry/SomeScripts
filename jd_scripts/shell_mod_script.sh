@@ -49,8 +49,8 @@ sed -i "s/12 8,18 \* \* \* sleep \$((RANDOM % \$RANDOM_DELAY_MAX)); spnode \/scr
 sed -i "s/47 8 \* \* \* spnode \/scripts\/jd_sgmh.js/50 8,23 \* \* \* spnode \/scripts\/jd_sgmh.js/g" /scripts/docker/merged_list_file.sh
 sed -i "s/47 8 \* \* \* sleep \$((RANDOM % \$RANDOM_DELAY_MAX)); spnode \/scripts\/jd_sgmh.js/50 8,23 \* \* \* sleep \$((RANDOM % \$RANDOM_DELAY_MAX)); spnode \/scripts\/jd_sgmh.js/g" /scripts/docker/merged_list_file.sh
 # 修改京东赚赚定时
-sed -i "s/6 0,11 \* \* \* spnode \/scripts\/jd_jdzz.js/10 0-4 \* \* \* spnode \/scripts\/jd_jdzz.js/g" /scripts/docker/merged_list_file.sh
-sed -i "s/6 0,11 \* \* \* sleep \$((RANDOM % \$RANDOM_DELAY_MAX)); spnode \/scripts\/jd_jdzz.js/10 0-4 \* \* \* sleep \$((RANDOM % \$RANDOM_DELAY_MAX)); spnode \/scripts\/jd_jdzz.js/g" /scripts/docker/merged_list_file.sh
+sed -i "s/6 0,1,2,11 \* \* \* spnode \/scripts\/jd_jdzz.js/10 \* \* \* \* spnode \/scripts\/jd_jdzz.js/g" /scripts/docker/merged_list_file.sh
+sed -i "s/6 0,1,2,11 \* \* \* sleep \$((RANDOM % \$RANDOM_DELAY_MAX)); spnode \/scripts\/jd_jdzz.js/10 \* \* \* \* sleep \$((RANDOM % \$RANDOM_DELAY_MAX)); spnode \/scripts\/jd_jdzz.js/g" /scripts/docker/merged_list_file.sh
 # 修改京东家庭号定时
 sed -i "s/10 6,7 \* \* \* spnode \/scripts\/jd_family.js/30 6,15 \* \* \* spnode \/scripts\/jd_family.js/g" /scripts/docker/merged_list_file.sh
 sed -i "s/10 6,7 \* \* \* sleep \$((RANDOM % \$RANDOM_DELAY_MAX)); spnode \/scripts\/jd_family.js/30 6,15 \* \* \* sleep \$((RANDOM % \$RANDOM_DELAY_MAX)); spnode \/scripts\/jd_family.js/g" /scripts/docker/merged_list_file.sh
@@ -81,5 +81,6 @@ sed -i "s/https:\/\/cdn.jsdelivr.net\/gh\/gitupdate\/updateTeam@master\/shareCod
 sed -i "s/https:\/\/cdn.jsdelivr.net\/gh\/gitupdate\/updateTeam@master\/shareCodes\/jd_updateSmallHomeInviteCode.json/https:\/\/raw.githubusercontent.com\/FKPYW\/updateTeam\/master\/shareCodes\/jd_updateSmallHomeInviteCode.json/g" /scripts/jd_small_home.js
 sed -i "s/https:\/\/raw.githubusercontent.com\/LXK9301\/updateTeam\/master\/jd_updateSmallHomeInviteCode.json/https:\/\/raw.githubusercontent.com\/FKPYW\/updateTeam\/master\/shareCodes\/jd_updateSmallHomeInviteCode.json/g" /scripts/jd_small_home.js
 # 京东赚赚
+sed -i "s/nowTimes.getDate() === 1/& \&\& nowTimes.getHours() === 11/g" /scripts/jd_jdzz.js
 sed -i "s/http:\/\/qr6pzoy01.hn-bkt.clouddn.com\/jd_zz.json/https:\/\/raw.githubusercontent.com\/FKPYW\/updateTeam\/master\/shareCodes\/jd_zz.json/g" /scripts/jd_jdzz.js
 sed -i "s/https:\/\/raw.githubusercontent.com\/gitupdate\/updateTeam\/master\/shareCodes\/jd_zz.json/https:\/\/raw.githubusercontent.com\/FKPYW\/updateTeam\/master\/shareCodes\/jd_zz.json/g" /scripts/jd_jdzz.js
