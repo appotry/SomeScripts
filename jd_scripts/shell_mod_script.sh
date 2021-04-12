@@ -17,7 +17,7 @@ if [ ! -d "/monk/" ]; then
     chmod 600 /root/.ssh/id_rsa
     ssh-keyscan github.com > /root/.ssh/known_hosts
     echo "SSH KEY 配置完成，初始化下载相关脚本..."
-    git clone git@github.com:monk-coder/dust /monk
+    git clone git@github.com:Aaron-lv/dust /monk
   else
     echo "未检查到 MONK_SSH_KEY..."
   fi
